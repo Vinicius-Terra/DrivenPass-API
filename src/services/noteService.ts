@@ -7,7 +7,6 @@ const cryptr = new Cryptr(process.env.TOKEN_SECRET || '123');
 
 
 export async function createNote(userData:CreateNoteData, userId:number) {
-    console.log(userId)
     if(userId === undefined){
         throw ({type:"unprocessable entity", mensage:"Token is missing"})
     }

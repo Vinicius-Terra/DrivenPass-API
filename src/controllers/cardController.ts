@@ -5,7 +5,7 @@ import * as cardService from '../services/cardService'
 export async function createCard(req: Request, res: Response) {
   const {userId} = res.locals.userId;
   const credentialData:CreateCardData = req.body;
-  console.log(await cardService.createCard(credentialData, userId))
+  await cardService.createCard(credentialData, userId)
   res.sendStatus(200)
 }
 

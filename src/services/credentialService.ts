@@ -12,7 +12,6 @@ function encryptPassword (password: string) : string{
 };
 
 export async function createCredential(userData:CreateCredentialData, userId:number) {
-    console.log(userId)
     if(userId === undefined){
         throw ({type:"unprocessable entity", mensage:"Token is missing"})
     }

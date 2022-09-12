@@ -5,7 +5,7 @@ import * as noteService from '../services/noteService'
 export async function createNote(req: Request, res: Response) {
   const {userId} = res.locals.userId;
   const noteData:CreateNoteData = req.body;
-  console.log(await noteService.createNote(noteData, userId))
+  await noteService.createNote(noteData, userId)
   res.sendStatus(200)
 }
 

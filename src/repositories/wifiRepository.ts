@@ -2,10 +2,10 @@ import { prisma } from "../config/database";
 import { CreateWifiData } from "../types/wifiTypes"
 
 
-export async function createCredential(createCredential:CreateWifiData, userId:number) {
+export async function createWifi(CreateWifiData:CreateWifiData, userId:number) {
     
     return await prisma.wiFi.create({
-        data: {...createCredential, userId},
+        data: {...CreateWifiData, userId},
       });
     
 }

@@ -5,7 +5,6 @@ const SECRET = process.env.TOKEN_SECRET || '123';
 
 export async function validateToken (req:Request, res:Response, next:NextFunction){
     const { authorization } = req.headers;
-    console.log({ authorization })
     const token = authorization?.replace('Bearer ', '');
 
     if(token === null || token === undefined){
@@ -18,7 +17,6 @@ export async function validateToken (req:Request, res:Response, next:NextFunctio
             throw ({type:'unauthorized'})
         }
         else{
-        console.log(id)
         res.locals.userId = id;
         next();
         }
