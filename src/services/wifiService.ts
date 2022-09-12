@@ -3,7 +3,7 @@ import { Credentials } from "@prisma/client";
 import {CreateCredentialData} from "../types/credentialTypes"
 import bcrypt from "bcrypt";
 import Cryptr from "cryptr"
-const cryptr = new Cryptr('myTotallySecretKey');
+const cryptr = new Cryptr(process.env.TOKEN_SECRET || '123');
 
 
 function encryptPassword (password: string) : string{

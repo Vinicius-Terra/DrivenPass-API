@@ -2,10 +2,10 @@ import { prisma } from "../config/database";
 import { CreateNoteData } from "../types/noteTypes"
 
 
-export async function createCredential(createCredential:CreateNoteData, userId:number) {
+export async function createnNote(CreateNoteData:CreateNoteData, userId:number) {
     
     return await prisma.notes.create({
-        data: {...createCredential, userId},
+        data: {...CreateNoteData, userId},
       });
     
 }

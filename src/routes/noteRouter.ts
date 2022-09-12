@@ -6,15 +6,17 @@ import {
     deleteNote
 } from '../controllers/noteController';
 import { validateSchemaMiddleware } from './../middlewares/validateSchema';
+import { noteSchema } from '../schemas/noteSchema'
+import { validateToken } from '../middlewares/authValidator'
 
 const noteRouter = Router();
 
-noteRouter.get('/notes', getByUser);
+noteRouter.get('/notes', validateToken, getByUser);
 
-noteRouter.get('/note/:id', getById);
+noteRouter.get('/note/:id', validateToken, getById);
 
-noteRouter.post('/note', createNote);
+noteRouter.post('/note', validateToken, validateSchemaMiddleware(noteSchema), createNote);
 
-noteRouter.delete('/note/:id', deleteNote);
+noteRouter.delete('/note/:id', validateToken, deleteNote);
 
 export default noteRouter;

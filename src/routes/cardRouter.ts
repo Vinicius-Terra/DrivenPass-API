@@ -6,16 +6,18 @@ import {
     deleteCard
 } from '../controllers/cardController';
 import { validateSchemaMiddleware } from './../middlewares/validateSchema';
+import { cardSchema } from '../schemas/cardSchema'
+import { validateToken } from '../middlewares/authValidator'
 
 const cardRouter = Router();
 
-cardRouter.get('/cards', getByUser);
+cardRouter.get('/cards', validateToken, getByUser);
 
-cardRouter.get('/card/:id', getById);
+cardRouter.get('/card/:id', validateToken, getById);
 
-cardRouter.post('/card', createCard);
+cardRouter.post('/card', validateToken, validateSchemaMiddleware(cardSchema), createCard);
 
-cardRouter.delete('/card/:id', deleteCard);
+cardRouter.delete('/card/:id', validateToken, deleteCard);
 
 export default cardRouter;
 
