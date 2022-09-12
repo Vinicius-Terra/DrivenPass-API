@@ -6,15 +6,18 @@ import {
     deleteCredential
 } from '../controllers/credentialController';
 import { validateSchemaMiddleware } from './../middlewares/validateSchema';
+import { credentialSchema } from '../schemas/credentialSchema'
+import { validateToken } from '../middlewares/authValidator'
+
 
 const credentialRouter = Router();
 
-credentialRouter.get('/credentials', getByUser);
+credentialRouter.get('/credentials', validateToken, getByUser);
 
-credentialRouter.get('/credential/:id', getById);
+credentialRouter.get('/credential/:id',validateToken, getById);
 
-credentialRouter.post('/credential', createCredential);
+credentialRouter.post('/credential', validateSchemaMiddleware(credentialSchema), validateToken, createCredential);
 
-credentialRouter.delete('/credential/:id', deleteCredential);
+credentialRouter.delete('/credential/:id', validateToken, deleteCredential);
 
 export default credentialRouter;

@@ -1,12 +1,13 @@
 import Joi from "joi";
+import {SiginUserData, LoginUserData} from "../types/userTypes"
 
-export const signUpSchema = Joi.object({
+export const signUpSchema = Joi.object<SiginUserData>({
     email: Joi.string().email({ tlds: { allow: false } }).required(),
     password: Joi.string().min(10).required(),
     confirmPassword: Joi.string().valid(Joi.ref('password')).required()
 })
 
-export const signInSchema = Joi.object({
+export const loginSchema = Joi.object<LoginUserData>({
     email: Joi.string().email({ tlds: { allow: false } }).required(),
     password: Joi.string().min(10).required()
 });

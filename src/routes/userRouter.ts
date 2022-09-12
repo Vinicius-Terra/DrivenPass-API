@@ -4,12 +4,13 @@ import {
     login
 } from '../controllers/userController';
 import { validateSchemaMiddleware } from './../middlewares/validateSchema';
+import {signUpSchema, loginSchema} from '../schemas/userSchema'
 
 const userRouter = Router();
 
-userRouter.post('/sigin', createUser);
+userRouter.post('/sigin', validateSchemaMiddleware(signUpSchema), createUser);
 
-userRouter.post('/login', login);
+userRouter.post('/login', validateSchemaMiddleware(loginSchema), login);
 
 
 export default userRouter;

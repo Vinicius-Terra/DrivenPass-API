@@ -1,10 +1,17 @@
 import { Request, Response } from 'express';
+import * as userService from '../services/userService'
+import {SiginUserData, LoginUserData} from "../types/userTypes"
 
 export async function createUser(req: Request, res: Response) {
-  // TODO
+  const userData:SiginUserData = req.body;
+  await userService.createUser(userData);
+  res.sendStatus(200);
 }
 
 export async function login(req: Request, res: Response) {
-  // TODO
+  const user:LoginUserData = req.body;
+  
+  const token = await userService.login(user);
+  res.send(token).status(200);
 }
 
