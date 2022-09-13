@@ -1,7 +1,7 @@
 import { prisma } from "../config/database";
-import {SiginUserData, LoginUserData} from "../types/userTypes"
+import {SignupUserData, LoginUserData} from "../types/userTypes"
 
-async function createUser(userData:SiginUserData) {
+async function createUser(userData:SignupUserData) {
     return await prisma.user.create({
         data: userData,
       });

@@ -11,6 +11,6 @@ interface IUser {
 // confirmPassword is optional because i need to delete it in the service
 // no optinal operand can not be deleted in TS.
 
-export type SiginUserData = Omit<IUser, "id">
+export type SignupUserData = Omit<IUser, "id">
 export type LoginUserData = Omit<IUser, "id" | "confirmpassword">
 

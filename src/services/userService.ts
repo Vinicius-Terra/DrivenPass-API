@@ -1,10 +1,10 @@
 import userRepositore from '../repositories/userRepository'
 import { User } from "@prisma/client";
-import {SiginUserData, LoginUserData} from "../types/userTypes"
+import {SignupUserData, LoginUserData} from "../types/userTypes"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export async function createUser(userData:SiginUserData) {
+export async function createUser(userData:SignupUserData) {
     
     const {email} = userData;
     const doesEmailAlreadyExist = await userRepositore.findByEmail(email)

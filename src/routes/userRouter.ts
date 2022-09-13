@@ -8,7 +8,7 @@ import {signUpSchema, loginSchema} from '../schemas/userSchema'
 
 const userRouter = Router();
 
-userRouter.post('/sigin', validateSchemaMiddleware(signUpSchema), createUser);
+userRouter.post('/signup', validateSchemaMiddleware(signUpSchema), createUser);
 
 userRouter.post('/login', validateSchemaMiddleware(loginSchema), login);
 
